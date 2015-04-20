@@ -14,7 +14,11 @@ window.onload = function() {
     // Place each word in wordArray within a new 'span' element
     for (var i = 0; i < wordArray.length; i++) {
          var newSpan = document.createElement("span");
-         var newText = document.createTextNode(wordArray[i] + " ");
+         var newText = document.createTextNode(wordArray[i]);
+         var spaceSpan = document.createElement("span");
+         var spacer = document.createTextNode(" ");
+            // Put the spacers inside span element
+            spaceSpan.appendChild(spacer);
             // Add words to span elements
             newSpan.appendChild(newText);
             // Set class of "word" for each span element
@@ -23,8 +27,10 @@ window.onload = function() {
             newSpan.setAttribute("id", "word" + i);
             // Add newSpan to original div
             myText.appendChild(newSpan);
+            // Add spaceSpan to original div
+            myText.appendChild(spaceSpan);
       }
-
+      
      // Add a handler to the div element which changes the 
      // background to yellow when word is moused over  
      myText.addEventListener("mouseover", function(event) {    
@@ -48,25 +54,4 @@ window.onload = function() {
 var btn = document.getElementById("divideTranscript");
 btn.addEventListener("click", divideText, false); 
 } //end window.onload
-
-
-/*
-String firstWord = null;
-if(string.contains(" ")){
-   firstWord= string.substring(0, string.indexOf(" ")); 
-}
-
-var str = "Hello world now";
-var arr = str.split(" ");
-var text = "";
-var i;
-for (i = 0; i < arr.length; i++) {
-    text += arr[i] + "<br>"
-}
-
-Without seeing your code, I'm going to say that I don't think you need another Array. If you have the background of the words, and the trailing blank space, turning yellow when you mouseover, you are well on your way.
- 
-What I would suggest is, when you loop through the Array to set the class attribute fo each word, check to see if there is a trailing space. If there is, use something like substring to just grab the word, put that in the span, then set the class/background. Then, get that space and put it in its own span -- but don't set the class attribute.
- 
-*/
 
